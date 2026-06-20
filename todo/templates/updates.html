@@ -1,22 +1,31 @@
 
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Task</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
+
+    <h1>Update Task</h1>
+
     <form method="POST" id="page2">
         {% csrf_token %}
-        <label style="background-color: brown;color: black;">Name:</label>
-        <input type="text" name="taskname" value="{{a.taskname}}"><br><br>
-        <label style="background-color: brown;color: black;">Date:</label>
-        <input type="date" name="taskdate" 
-        value="{{ a.taskdate|date:'Y-m-d' }}"><br><br>
-        <button type="submit">Update</button>
-    </form>
-</body>
+        <div class="form-group">
+            <label for="update-name">Task Name:</label>
+            <input type="text" id="update-name" name="taskname" value="{{ a.taskname }}" required>
+        </div>
 
+        <div class="form-group">
+            <label for="update-date">Due Date:</label>
+            <input type="date" id="update-date" name="taskdate" value="{{ a.taskdate|date:'Y-m-d' }}" required>
+        </div>
+
+        <button type="submit">Save Changes</button>
+    </form>
+
+</body>
 </html>
